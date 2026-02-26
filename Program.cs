@@ -1,6 +1,9 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;
+using MvcMovie.Data;
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<MvcMovieContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MvcMovieContext") ?? throw new InvalidOperationException("Connection string 'MvcMovieContext' not found.")));// Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -27,3 +30,18 @@ app.MapControllerRoute(
 
 
 app.Run();
+
+
+namespace MvcMovie.Data
+{
+    public class MvcMovieContext : DbContext
+    {
+        public MvcMovieContext (DbContextOptions<MvcMovieContext> options)
+            : base(options)
+        {
+        }
+
+        public DbSet<MvcMovie.Models.Movie_> Movie_ { get; set; } = default!;
+    }
+    
+}
