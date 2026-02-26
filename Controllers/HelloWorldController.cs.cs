@@ -11,7 +11,7 @@ public class HelloWorldController : Controller
         ViewData["NumTimes"] = 3;
         return View();
     }
-    public IActionResult Welcome(string name, int numTimes = 1)
+    public IActionResult Welcome(string name="MICHAL", int numTimes = 1)
     {
         ViewData["Message"] = "Hello " + name;
         ViewData["NumTimes"] = numTimes;

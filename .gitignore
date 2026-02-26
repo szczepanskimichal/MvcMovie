@@ -53,6 +53,9 @@ node_modules/
 package-lock.json
 npm-debug.log
 
+# AI/Copilot
+ai/copilot/prompts/
+
 # Misc
 *.swp
 *.swo
